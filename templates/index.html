@@ -4,168 +4,183 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>던전앤파이터 캐릭터 검색</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .character-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .character-frame {
-            width: 200px;
-            text-align: center;
-        }
-        .character-frame img {
-            width: 100%;
-            height: auto;
-        }
-        .character-info {
-            margin-top: 10px;
-            font-size: 14px;
-        }
-        .popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-            overflow: auto;
-        }
-        .popup-content {
-            background-color: white;
-            width: 80%;
-            height: 80%;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-        .popup-body {
-            flex: 1;
-            display: flex;
-            overflow-y: auto;
-        }
-        .popup-left {
-            flex-basis: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #f4f4f4;
-        }
-        .popup-left img {
-            max-width: 100%;
-            height: auto;
-        }
-        .popup-right {
-            flex-basis: 70%;
-            padding: 20px;
-            overflow-y: auto;
-        }        
-        .popup-footer {
-            height: 60px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            background-color: #333;
-            color: white;
-        }
-        .popup-footer button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-        .popup-footer button:hover {
-            background-color: #0056b3;
-        }
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .character-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .character-frame {
+        width: 200px;
+        text-align: center;
+    }
+    .character-frame img {
+        width: 100%;
+        height: auto;
+    }
+    .character-info {
+        margin-top: 10px;
+        font-size: 14px;
+    }
+    .popup {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        overflow: auto;
+    }
+    .popup-content {
+        background-color: white;
+        width: 80%;
+        height: 80%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+    .popup-body {
+        flex: 1;
+        display: flex;
+        overflow-y: auto;
+    }
+    .popup-left {
+        flex-basis: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f4f4f4;
+    }
+    .popup-left img {
+        max-width: 100%;
+        height: auto;
+    }
+    .popup-right {
+        flex-basis: 70%;
+        padding: 20px;
+        overflow-y: auto;
+    }
+    .popup-footer {
+        height: 60px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #333;
+        color: white;
+    }
+    .popup-footer button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+    .popup-footer button:hover {
+        background-color: #0056b3;
+    }
 
-        .equipment-item {
-            margin: 10px 0;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column; /* 장비 항목을 세로로 배치 */
-            align-items: flex-start; /* 왼쪽 정렬 */
-            position: relative;
-        }
+    .equipment-item {
+        margin: 10px 0;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        /* 장비 항목을 세로로 배치 */
+        align-items: flex-start;
+        /* 왼쪽 정렬 */
+        position: relative;
+    }
 
-        .equipment-item-content {
-            display: flex;
-            align-items: center; /* 이미지와 텍스트를 수평으로 정렬 */
-        }
+    .equipment-item-content {
+        display: flex;
+        align-items: center;
+        /* 이미지와 텍스트를 수평으로 정렬 */
+    }
 
+    .equipment-item img {
+        max-width: 100px;
+        /* 기본 이미지 너비 */
+        height: auto;
+        margin-right: 10px;
+        /* 이미지와 텍스트 사이 간격 */
+    }
+
+    @media (min-width: 768px) {
         .equipment-item img {
-            max-width: 100px; /* 기본 이미지 너비 */
-            height: auto;
-            margin-right: 10px; /* 이미지와 텍스트 사이 간격 */
+            max-width: 150px;
+            /* 큰 화면에서는 이미지 너비를 증가시킴 */
         }
+    }
 
-        @media (min-width: 768px) {
-            .equipment-item img {
-                max-width: 150px; /* 큰 화면에서는 이미지 너비를 증가시킴 */
-            }
+    @media (min-width: 1200px) {
+        .equipment-item img {
+            max-width: 200px;
+            /* 더 큰 화면에서는 이미지 너비를 더 증가시킴 */
         }
+    }
 
-        @media (min-width: 1200px) {
-            .equipment-item img {
-                max-width: 200px; /* 더 큰 화면에서는 이미지 너비를 더 증가시킴 */
-            }
-        }
+    .equipment-item span {
+        text-align: left;
+        /* 텍스트를 왼쪽 정렬 */
+        font-size: 14px;
+    }
 
-        .equipment-item span {
-            text-align: left; /* 텍스트를 왼쪽 정렬 */
-            font-size: 14px;
-        }
+    .dropdown-content {
+        display: none;
+        background-color: #f9f9f9;
+        width: 80%;
+        /* 장비 항목의 너비에 맞춤 */
+        border: 1px solid #ccc;
+        z-index: 1;
+        padding: 10px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        margin-top: 5px;
+        /* 드롭다운이 장비 항목 아래에 나타나도록 설정 */
+    }
 
-        .dropdown-content {
-            display: none;
-            background-color: #f9f9f9;
-            width: 80%; /* 장비 항목의 너비에 맞춤 */
-            border: 1px solid #ccc;
-            z-index: 1;
-            padding: 10px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            margin-top: 5px; /* 드롭다운이 장비 항목 아래에 나타나도록 설정 */
-        }
+    .show {
+        display: block;
+    }
 
-        .show {
-            display: block;
-        }
+    .option-text {
+        word-wrap: break-word;
+        max-width: 100%;
+        white-space: pre-wrap;
+        /* 공백과 줄바꿈을 유지하고 긴 문자열을 줄바꿈 */
+    }
 
-        .option-text {
-            word-wrap: break-word;
-            max-width: 100%;
-            white-space: pre-wrap; /* 공백과 줄바꿈을 유지하고 긴 문자열을 줄바꿈 */
-        }
+    .top_container1 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 20px;
+    }
 
+    .top_container1 label,
+    .top_container1 select {
+        margin-right: 10px;
+        /* label과 select 사이에 여백 추가 */
+    }
 
-        .top_container1 {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 20px;
-        }
+    .top_container1 a {
+        color: black;
+        /* 링크 글자색 검정 */
+        text-decoration: none;
+        /* 링크 밑줄 제거 */
+    }
 
-        .top_container1 label,
-        .top_container1 select {
-            margin-right: 10px; /* label과 select 사이에 여백 추가 */
-        }
+    .top_container2 {
+        margin: 20px;
+    }
 
-        .top_container1 a {
-            color: black; /* 링크 글자색 검정 */
-            text-decoration: none; /* 링크 밑줄 제거 */
-        }
-
-        .top_container2 {
-            margin: 20px;
-        }
-
-
+    .topBtn{
+        padding: 5px;
+    }
 </style>
 </head>
 <body>
@@ -186,15 +201,16 @@
             </select>
         </div>
         <div>
-            <button><a href="#" style="color: black; text-decoration: none;">메인화면</a></button>
-            <button><a href="#" style="color: black; text-decoration: none;">메이플</a></button>
+            <button class="topBtn"><a href="https://dailyofdaily.github.io/MainScreen/" style="color: black; text-decoration: none;">메인화면</a></button>
+            <button class="topBtn"><a href="https://dailyofdaily.github.io/Maple_API/" style="color: black; text-decoration: none;">메이플</a></button>
         </div>
     </div>
 
     <div class="top_container2">
-        <label for="characterName">캐릭터 검색 : </label>
-        <input type="text" id="characterName" placeholder="캐릭터 이름을 입력하세요" onkeypress="handleKeyPress(event)">
-        <button onclick="searchCharacter()">검색</button>
+        <label for="characterName">캐릭터 검색 :
+        </label>
+        <input class="topBtn" type="text" id="characterName" placeholder="캐릭터 이름을 입력하세요" onkeypress="handleKeyPress(event)">
+        <button class="topBtn" onclick="searchCharacter()">검색</button>
     </div>
 
     <div class="character-container" id="characterContainer"></div>
@@ -203,7 +219,7 @@
         <div class="popup-content">
             <div class="popup-body">
                 <div class="popup-left">
-                    <img id="popupCharacterImg" src="" alt="Character Image" />
+                    <img id="popupCharacterImg" src="" alt="Character Image"/>
                 </div>
                 <div class="popup-right" id="popupRightContent"></div>
             </div>
@@ -217,10 +233,10 @@
     </div>
 
     <script>
-        //let currentCharacter = {};
-
-        function handleKeyPress(event) {
-            if (event.key === 'Enter') {
+        function handleKeyPress(event) 
+        {
+            if (event.key === 'Enter') 
+            {
                 searchCharacter();
             }
         }
@@ -228,8 +244,9 @@
         function searchCharacter() {
             const characterName = document.getElementById('characterName').value.trim();
             const serverId = document.getElementById('serverSelect').value;
-    
-            if (!characterName || !serverId) {
+
+            if (!characterName || !serverId) 
+            {
                 alert("캐릭터 이름을 입력해 주세요.");
                 return;
             }
@@ -239,85 +256,95 @@
 
             fetch(apiUrl_main, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    characterName: characterName,
-                    serverId: serverId
-                })
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({characterName: characterName, serverId: serverId})
             })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);  // 서버에서 반환된 데이터를 콘솔에 출력
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data); // 서버에서 반환된 데이터를 콘솔에 출력
 
-                if (data.error) {
-                    alert("Error: " + data.error);
-                    return;
-                }
+                    if (data.error) 
+                    {
+                        alert("Error: " + data.error);
+                        return;
+                    }
 
-                if (Object.keys(data).length === 0) {
-                    alert("No characters found.");
-                    return;
-                }
+                    if (Object.keys(data).length === 0) 
+                    {
+                        alert("No characters found.");
+                        return;
+                    }
 
-                // 캐릭터 컨테이너 비우기
-                const container = document.getElementById('characterContainer');
-                container.innerHTML = '';  // 기존 캐릭터 이미지를 모두 삭제
+                    // 캐릭터 컨테이너 비우기
+                    const container = document.getElementById('characterContainer');
+                    container.innerHTML = ''; // 기존 캐릭터 이미지를 모두 삭제
 
-                let characterFound = false;
+                    let characterFound = false;
 
-                // 2글자 이상일 경우 먼저 정확히 일치하는 캐릭터를 찾고, 그 다음에 포함된 캐릭터들을 찾음
-                const exactMatches = [];
-                const partialMatches = [];
+                    // 2글자 이상일 경우 먼저 정확히 일치하는 캐릭터를 찾고, 그 다음에 포함된 캐릭터들을 찾음
+                    const exactMatches = [];
+                    const partialMatches = [];
 
-                for (let id in data) {
-                    const character = data[id];
+                    for (let id in data) 
+                    {
+                        const character = data[id];
 
-                    if (serverId === 'all' || character.serverId === serverId) {
-                        if (characterName.length === 1) {
-                            // 1글자일 경우: 정확하게 일치하는 캐릭터만 검색
-                            if (character.characterName === characterName) {
-                                exactMatches.push(character);
-                            }
-                        } else {
-                            // 2글자 이상일 경우: 먼저 정확히 일치하는 캐릭터를 찾고, 그 다음에 포함된 캐릭터를 추가
-                            if (character.characterName === characterName) {
-                                exactMatches.push(character);  // 정확히 일치하는 캐릭터
-                            } else if (character.characterName.includes(characterName)) {
-                                partialMatches.push(character);  // 포함하는 캐릭터
+                        if (serverId === 'all' || character.serverId === serverId) 
+                        {
+                            if (characterName.length === 1) 
+                            {
+                                // 1글자일 경우: 정확하게 일치하는 캐릭터만 검색
+                                if (character.characterName === characterName) 
+                                {
+                                    exactMatches.push(character);
+                                }
+                            } 
+                            else 
+                            {
+                                // 2글자 이상일 경우: 먼저 정확히 일치하는 캐릭터를 찾고, 그 다음에 포함된 캐릭터를 추가
+                                if (character.characterName === characterName) 
+                                {
+                                    exactMatches.push(character); // 정확히 일치하는 캐릭터
+                                } 
+                                else if (character.characterName.includes(characterName)) 
+                                {
+                                    partialMatches.push(character); // 포함하는 캐릭터
+                                }
                             }
                         }
                     }
-                }
 
-                // 정확히 일치하는 캐릭터 출력
-                if (exactMatches.length > 0) {
-                    exactMatches.forEach(character => {
-                        createCharacterElement(character, container);
-                        characterFound = true;
-                    });
-                }
+                    // 정확히 일치하는 캐릭터 출력
+                    if (exactMatches.length > 0) 
+                    {
+                        exactMatches.forEach(character => {
+                            createCharacterElement(character, container);
+                            characterFound = true;
+                        });
+                    }
 
-                // 포함하는 캐릭터 출력
-                if (partialMatches.length > 0) {
-                    partialMatches.forEach(character => {
-                        createCharacterElement(character, container);
-                        characterFound = true;
-                    });
-                }
+                    // 포함하는 캐릭터 출력
+                    if (partialMatches.length > 0) 
+                    {
+                        partialMatches.forEach(character => {
+                            createCharacterElement(character, container);
+                            characterFound = true;
+                        });
+                    }
 
-                if (!characterFound) {
-                    alert("No matching character found.");
-                }
-            })
-            .catch(error => {
-                alert("An error occurred: " + error);
-                console.error('Error:', error);
-            });
+                    if (!characterFound) 
+                    {
+                        alert("No matching character found.");
+                    }
+                })
+                .catch(error => {
+                    alert("An error occurred: " + error);
+                    console.error('Error:', error);
+                });
         }
 
-        function createCharacterElement(character, container) {
+        function createCharacterElement(character, container) 
+        {
             const characterId = character.characterId;
             const characterServerId = character.serverId;
             const apiUrl_img = `https://img-api.neople.co.kr/df/servers/${characterServerId}/characters/${characterId}?zoom=3`;
@@ -326,7 +353,8 @@
             characterDiv.className = 'character-frame';
 
             // 서버 ID를 한글로 변환하는 매핑
-            const serverNameMap = {
+            const serverNameMap = 
+            {
                 'cain': '카인',
                 'diregie': '디레지에',
                 'siroco': '시로코',
@@ -338,7 +366,7 @@
             };
 
             // characterServerId에 따른 한글 서버명 출력
-            const serverName = serverNameMap[characterServerId] || characterServerId;  // 해당되지 않으면 기본 ID 출력
+            const serverName = serverNameMap[characterServerId] || characterServerId; // 해당되지 않으면 기본 ID 출력
 
             characterDiv.innerHTML = `
                 <img src="${apiUrl_img}" alt="${character.characterName}" onclick="openPopup('${characterServerId}', '${characterId}', '${apiUrl_img}')">
@@ -351,7 +379,8 @@
             container.appendChild(characterDiv);
         }
 
-        function openPopup(serverId, characterId, imageUrl) {
+        function openPopup(serverId, characterId, imageUrl) 
+        {
             currentCharacter = { serverId, characterId };
             document.getElementById('popupCharacterImg').src = imageUrl;
             document.getElementById('popupRightContent').innerHTML = '';
@@ -359,31 +388,39 @@
             document.getElementById('characterPopup').style.display = 'flex';
         }
 
-        function closePopup() {
+        function closePopup() 
+        {
             document.getElementById('popupRightContent').innerHTML = '';
             document.getElementById('characterPopup').style.display = 'none';
         }
 
-        window.onclick = function(event) {
+        window.onclick = function (event) 
+        {
             const popup = document.getElementById('characterPopup');
-            if (event.target == popup) {
+            if (event.target == popup) 
+            {
                 closePopup();
             }
         };
-// 장비
-        function showEquipment() {
-            const { serverId, characterId } = currentCharacter;
+
+        // 장비
+        function showEquipment() 
+        {
+            const {serverId, characterId} = currentCharacter;
+
             fetch(`/api/equipment/${serverId}/${characterId}`)
                 .then(response => response.json())
                 .then(data => {
                     const rightContent = document.getElementById('popupRightContent');
                     rightContent.innerHTML = '<h2>장착 장비</h2>';
-                    
-                    if (data.equipment && data.equipment.length > 0) {
+
+                    if (data.equipment && data.equipment.length > 0) 
+                    {
                         data.equipment.forEach(item => {
                             const itemDiv = document.createElement('div');
                             itemDiv.className = 'equipment-item';
-                            itemDiv.innerHTML = `
+                            itemDiv.innerHTML = 
+                            `
                                 <div class="equipment-item-content">
                                     <img src="https://img-api.neople.co.kr/df/items/${item.itemId}" alt="${item.itemName}">
                                     <span>${item.itemName}</span>
@@ -398,10 +435,12 @@
                                     <p class="option-text"><strong>장비옵션:<br></strong> ${item.fixedOption ? item.fixedOption.explain : item.customOption ? item.customOption.options.map(option => `<p>${option.explain}</p>`).join('') : '-'}</p>
                                 </div>
                             `;
-                            itemDiv.onclick = () => toggleDropdown(item.itemId);
-                            rightContent.appendChild(itemDiv);
-                        });
-                    } else {
+                                itemDiv.onclick = () => toggleDropdown(item.itemId);
+                                rightContent.appendChild(itemDiv);
+                            });
+                    } 
+                    else 
+                    {
                         rightContent.innerHTML += '<p>No equipment found.</p>';
                     }
                 })
@@ -410,11 +449,14 @@
                 });
         }
 
-        function toggleDropdown(itemId) {
+        //장비 드롭다운
+        function toggleDropdown(itemId) 
+        {
             // 모든 드롭다운을 닫음
             const allDropdowns = document.querySelectorAll('.dropdown-content');
             allDropdowns.forEach(dropdown => {
-                if (dropdown.id !== `details-${itemId}`) {
+                if (dropdown.id !== `details-${itemId}`) 
+                {
                     dropdown.classList.remove('show');
                 }
             });
@@ -424,15 +466,19 @@
             dropdownContent.classList.toggle('show');
         }
 
-        function showAvatar() {
+        //아바타
+        function showAvatar() 
+        {
             const serverId = currentCharacter.serverId;
             const characterId = currentCharacter.characterId;
 
             const avatarUrl = `/api/avatar/${serverId}/${characterId}`;
+
             fetch(avatarUrl)
                 .then(response => response.json())
                 .then(data => {
-                    if (data.error) {
+                    if (data.error) 
+                    {
                         alert("Error fetching avatar: " + data.error);
                         return;
                     }
@@ -440,87 +486,58 @@
                     const rightContent = document.getElementById('popupRightContent');
                     rightContent.innerHTML = '<h2>장착 아바타</h2>';
 
-                    // if (data.avatar && data.avatar.length > 0) {
-                    //     data.avatar.forEach(item => {
-                    //         const itemDiv = document.createElement('div');
-                    //         itemDiv.className = 'avatar-item';
-                    //         itemDiv.innerHTML = `
-                    //             <div class="avatar-item-content">
-                    //                 <img src="https://img-api.neople.co.kr/df/items/${item.itemId}" alt="${item.itemName}">
-                    //                 <span>${item.itemName}</span>
-                    //             </div>
-                    //             <div class="dropdown-content" id="details-${item.itemId}">
-                    //                 <p class="option-text"><strong>부위:</strong> ${item.slotName}</p>
-                    //                 <p class="option-text"><strong>이름1:</strong> ${item.itemName}</p>
-                    //                 <p class="option-text"><strong>이름2:</strong> ${item.clone.itemName}</p>;
-                    //                 <p class="option-text"><strong>옵션:</strong> ${item.optionAbility}</p>
-                    //             </div>
-                    //         `;
-                    //         itemDiv.onclick = () => toggleDropdown(item.itemId);
-                    //         rightContent.appendChild(itemDiv);
-                    //     });
-                    // } else {
-                    //     rightContent.innerHTML += '<p>No equipment found.</p>';
-                    // }
-
-                    if (data.avatar && data.avatar.length > 0) {
+                    if (data.avatar && data.avatar.length > 0) 
+                    {
                         data.avatar.forEach(item => {
-                            const itemDiv = document.createElement('div');
-                            itemDiv.className = 'avatar-item';
+                                const itemDiv = document.createElement('div');
+                                itemDiv.className = 'avatar-item';
 
-                            // 기본적으로 '이름1'을 출력
-                            let nameContent = `<p class="option-text"><strong>${item.itemName}</strong></p>`;
+                                // 기본적으로 '이름1'을 출력
+                                let nameContent = `<p class="option-text"><strong>${item.itemName}</strong></p>`;
 
-                            // '클론'이라는 단어가 포함되어 있으면 '이름2'도 출력
-                            if (item.itemName.includes('클론')) {
-                                const cloneName = item.clone.itemName ? item.clone.itemName : ' - '; // null일 경우 '없음' 출력
-                                nameContent += `<p class="option-text"><strong>${cloneName}</strong></p>`;
-                            }
+                                // '클론'이라는 단어가 포함되어 있으면 '이름2'도 출력
+                                if (item.itemName.includes('클론')) 
+                                {
+                                    const cloneName = item.clone.itemName ? item.clone.itemName : ' - '; // null일 경우 '없음' 출력
+                                    nameContent += `<p class="option-text"><strong>${cloneName}</strong></p>`;
+                                }
 
-                            itemDiv.innerHTML = `
-                                <div class="avatar-item-content">
-                                    <img src="https://img-api.neople.co.kr/df/items/${item.itemId}" alt="${item.itemName}">
-                                    <span>${item.itemName}</span>
-                                </div>
-                                <div class="dropdown-content" id="details-${item.itemId}">
-                                    <p class="option-text"><strong>부위 : </strong> ${item.slotName}</p>
-                                    ${nameContent} <!-- 이름1과 이름2를 조건에 따라 출력 -->
-                                    <p class="option-text"><strong>옵션 : </strong> ${item.optionAbility}</p>
-                                </div>
-                            `;
-                            itemDiv.onclick = () => toggleDropdown(item.itemId);
-                            rightContent.appendChild(itemDiv);
-                        });
-                    } else {
+                                itemDiv.innerHTML = 
+                                `
+                                    <div class="avatar-item-content">
+                                        <img src="https://img-api.neople.co.kr/df/items/${item.itemId}" alt="${item.itemName}">
+                                        <span>${item.itemName}</span>
+                                    </div>
+                                    <div class="dropdown-content" id="details-${item.itemId}">
+                                        <p class="option-text"><strong>부위 : </strong> ${item.slotName}</p>
+                                        ${nameContent} <!-- 이름1과 이름2를 조건에 따라 출력 -->
+                                        <p class="option-text"><strong>옵션 : </strong> ${item.optionAbility}</p>
+                                    </div>
+                                `;
+
+                                itemDiv.onclick = () => toggleDropdown(item.itemId);
+                                rightContent.appendChild(itemDiv);
+                            });
+                    } 
+                    else 
+                    {
                         rightContent.innerHTML += '<p>No equipment found.</p>';
                     }
 
-
-
-                    
-                    // data.avatar.forEach(item => {
-                    //     const itemId = item.itemId;
-                    //     const itemName = item.itemName;
-                    //     const itemImageUrl = `https://img-api.neople.co.kr/df/items/${itemId}`;
-
-                    //     const itemDiv = document.createElement('div');
-                    //     itemDiv.innerHTML = `
-                    //         <img src="${itemImageUrl}" alt="${itemName}" style="width: 50px; height: 50px;">
-                    //         <span>${itemName}</span>
-                    //     `;
-                    //     rightContent.appendChild(itemDiv);
-                    // });
                 })
                 .catch(error => {
                     console.error("Error fetching avatar:", error);
                 });
         }
 
-        function showStatus() {
+        //능력치
+        function showStatus() 
+        {
             const serverId = currentCharacter.serverId;
             const characterId = currentCharacter.characterId;
 
             const statusurl = `/api/status/${serverId}/${characterId}`;
+
             fetch(statusurl)
                 .then(response => response.json())
                 .then(data => {
@@ -530,7 +547,8 @@
                     const statusTable = document.createElement('table');
                     statusTable.style.width = '100%';
                     statusTable.style.borderCollapse = 'collapse';
-                    statusTable.innerHTML = `
+                    statusTable.innerHTML = 
+                    `
                         <thead>
                             <tr>
                                 <th style="border: 1px solid #ddd; padding: 8px;">Attribute</th>
@@ -538,12 +556,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            ${data.status.map(item => `
+                            ${data.status.map(item => 
+                            `
                                 <tr>
                                     <td style="border: 1px solid #ddd; padding: 8px;">${item.name}</td>
                                     <td style="border: 1px solid #ddd; padding: 8px;">${item.value}</td>
                                 </tr>
-                            `).join('')}
+                            `
+                            )
+                            .join('')}
                         </tbody>
                     `;
                     rightContent.appendChild(statusTable);
@@ -553,15 +574,19 @@
                 });
         }
 
-        function showCreature() {
+        //크리쳐
+        function showCreature() 
+        {
             const serverId = currentCharacter.serverId;
             const characterId = currentCharacter.characterId;
 
             const creatureUrl = `/api/creature/${serverId}/${characterId}`;
+
             fetch(creatureUrl)
                 .then(response => response.json())
                 .then(data => {
-                    if (data.error) {
+                    if (data.error) 
+                    {
                         alert("Error fetching creature: " + data.error);
                         return;
                     }
@@ -574,7 +599,8 @@
                     const itemImageUrl = `https://img-api.neople.co.kr/df/items/${itemId}`;
 
                     const itemDiv = document.createElement('div');
-                    itemDiv.innerHTML = `
+                    itemDiv.innerHTML = 
+                    `
                         <img src="${itemImageUrl}" alt="${itemName}" style="width: 50px; height: 50px;">
                         <span>${itemName}</span>
                     `;
