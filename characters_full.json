@@ -363,5 +363,220 @@
         "serverId": "bakal",
         "characterName": "햄스터",
         "characterId": "c658b5b9183aab6648ba90f12aeac893"
+    },
+    "4b3901a1bb59d96ac2714ebb93831333": {
+        "serverId": "cain",
+        "characterName": "1111",
+        "characterId": "4b3901a1bb59d96ac2714ebb93831333"
+    },
+    "5a763c6f2838773eabd54f7ee253be2a": {
+        "serverId": "diregie",
+        "characterName": "1111",
+        "characterId": "5a763c6f2838773eabd54f7ee253be2a"
+    },
+    "7787e94be8a7bff038e7e72b07309c64": {
+        "serverId": "siroco",
+        "characterName": "1111",
+        "characterId": "7787e94be8a7bff038e7e72b07309c64"
+    },
+    "abe43110bc8131936c35f8341edf747c": {
+        "serverId": "prey",
+        "characterName": "1111",
+        "characterId": "abe43110bc8131936c35f8341edf747c"
+    },
+    "5add19e097303eeb0d9f454cc77d4eb7": {
+        "serverId": "bakal",
+        "characterName": "1111",
+        "characterId": "5add19e097303eeb0d9f454cc77d4eb7"
+    },
+    "7e8e3f1e83871bbe5e83d9c90c3662fd": {
+        "serverId": "cain",
+        "characterName": "11111",
+        "characterId": "7e8e3f1e83871bbe5e83d9c90c3662fd"
+    },
+    "ed80f58c5b1e0598f8f01741d23c0b77": {
+        "serverId": "siroco",
+        "characterName": "11111",
+        "characterId": "ed80f58c5b1e0598f8f01741d23c0b77"
+    },
+    "0fbe7c74d1485bdde6902e988beb9429": {
+        "serverId": "hilder",
+        "characterName": "11111",
+        "characterId": "0fbe7c74d1485bdde6902e988beb9429"
+    },
+    "46fb04c3b48ac5be7f1588bfccb48df3": {
+        "serverId": "bakal",
+        "characterName": "11111",
+        "characterId": "46fb04c3b48ac5be7f1588bfccb48df3"
+    },
+    "e3fd17283603e45f8ab3ccee82a8cccc": {
+        "serverId": "cain",
+        "characterName": "111111",
+        "characterId": "e3fd17283603e45f8ab3ccee82a8cccc"
+    },
+    "504f6897f8eb792d5c65ecf248be886d": {
+        "serverId": "diregie",
+        "characterName": "111111",
+        "characterId": "504f6897f8eb792d5c65ecf248be886d"
+    },
+    "7a67398189f7c04a5294b87237ea3e8c": {
+        "serverId": "prey",
+        "characterName": "111111",
+        "characterId": "7a67398189f7c04a5294b87237ea3e8c"
+    },
+    "915bc6817dd7f652d12b25162a09649c": {
+        "serverId": "casillas",
+        "characterName": "111111",
+        "characterId": "915bc6817dd7f652d12b25162a09649c"
+    },
+    "bdbd01a2ed70317bdb3b4bb91da440a3": {
+        "serverId": "cain",
+        "characterName": "1111111",
+        "characterId": "bdbd01a2ed70317bdb3b4bb91da440a3"
+    },
+    "39842a087e14959d802847dc22fec88e": {
+        "serverId": "prey",
+        "characterName": "1111111",
+        "characterId": "39842a087e14959d802847dc22fec88e"
+    },
+    "b2040edca40979293be342b5087ce36d": {
+        "serverId": "hilder",
+        "characterName": "1111111",
+        "characterId": "b2040edca40979293be342b5087ce36d"
+    },
+    "4ed4ed9fb3374307f4d02db459f72b54": {
+        "serverId": "anton",
+        "characterName": "1111111",
+        "characterId": "4ed4ed9fb3374307f4d02db459f72b54"
+    },
+    "b2b82e2db6a360182c928b189bff5b14": {
+        "serverId": "cain",
+        "characterName": "11111111",
+        "characterId": "b2b82e2db6a360182c928b189bff5b14"
+    },
+    "70ee98aca61291a01ec313eac765e07e": {
+        "serverId": "diregie",
+        "characterName": "11111111",
+        "characterId": "70ee98aca61291a01ec313eac765e07e"
+    },
+    "0faf8d62925b78c3ad74479e27de1477": {
+        "serverId": "anton",
+        "characterName": "11111111",
+        "characterId": "0faf8d62925b78c3ad74479e27de1477"
+    },
+    "7d1d3cc44404ac5179f078126febb2d7": {
+        "serverId": "siroco",
+        "characterName": "111111111",
+        "characterId": "7d1d3cc44404ac5179f078126febb2d7"
+    },
+    "969a36bfbc86340d4aa0ffc5ece0a5d7": {
+        "serverId": "anton",
+        "characterName": "111111111",
+        "characterId": "969a36bfbc86340d4aa0ffc5ece0a5d7"
+    },
+    "45f83841dd9dc7abb4f9b6a3d47b653a": {
+        "serverId": "bakal",
+        "characterName": "111111111",
+        "characterId": "45f83841dd9dc7abb4f9b6a3d47b653a"
+    },
+    "c17c4ff9bae8da561a2270316a178e15": {
+        "serverId": "cain",
+        "characterName": "1111111111",
+        "characterId": "c17c4ff9bae8da561a2270316a178e15"
+    },
+    "db1f2f0b9dc819c49923797de16681eb": {
+        "serverId": "diregie",
+        "characterName": "1111111111",
+        "characterId": "db1f2f0b9dc819c49923797de16681eb"
+    },
+    "6b7c2be1032d34147b0ac429c4ef5faf": {
+        "serverId": "prey",
+        "characterName": "1111111111",
+        "characterId": "6b7c2be1032d34147b0ac429c4ef5faf"
+    },
+    "a9e04a8f7d62aff03501679be70a4934": {
+        "serverId": "bakal",
+        "characterName": "1111111111",
+        "characterId": "a9e04a8f7d62aff03501679be70a4934"
+    },
+    "a8f9f821912d93f8d1b9d2fe27ce5786": {
+        "serverId": "cain",
+        "characterName": "11111111111",
+        "characterId": "a8f9f821912d93f8d1b9d2fe27ce5786"
+    },
+    "005ecb17fb436fc50d00d84f21515602": {
+        "serverId": "siroco",
+        "characterName": "11111111111",
+        "characterId": "005ecb17fb436fc50d00d84f21515602"
+    },
+    "c91943e5f9570c520ffd991dabdffae0": {
+        "serverId": "casillas",
+        "characterName": "11111111111",
+        "characterId": "c91943e5f9570c520ffd991dabdffae0"
+    },
+    "6e1d58ced97121b035444276108fadbd": {
+        "serverId": "hilder",
+        "characterName": "11111111111",
+        "characterId": "6e1d58ced97121b035444276108fadbd"
+    },
+    "8c84c2d294c42ac9ce953053036e4b5c": {
+        "serverId": "anton",
+        "characterName": "11111111111",
+        "characterId": "8c84c2d294c42ac9ce953053036e4b5c"
+    },
+    "9f21c795469083d52d3d94518b951ffc": {
+        "serverId": "bakal",
+        "characterName": "11111111111",
+        "characterId": "9f21c795469083d52d3d94518b951ffc"
+    },
+    "5e6756235a1ed085d852f4366c5bf600": {
+        "serverId": "cain",
+        "characterName": "111111111111",
+        "characterId": "5e6756235a1ed085d852f4366c5bf600"
+    },
+    "68f986cbfc68ad5b7c3bb3fd3091d283": {
+        "serverId": "prey",
+        "characterName": "111111111111",
+        "characterId": "68f986cbfc68ad5b7c3bb3fd3091d283"
+    },
+    "92f6e8b72c8cfbaf6b3b9f3b573df1a2": {
+        "serverId": "casillas",
+        "characterName": "111111111111",
+        "characterId": "92f6e8b72c8cfbaf6b3b9f3b573df1a2"
+    },
+    "bf0827c38f047f22ac9d3c9a229109f8": {
+        "serverId": "anton",
+        "characterName": "111111111111",
+        "characterId": "bf0827c38f047f22ac9d3c9a229109f8"
+    },
+    "7aa7360c122c0b55cce82d4fcc321dcc": {
+        "serverId": "cain",
+        "characterName": "노노",
+        "characterId": "7aa7360c122c0b55cce82d4fcc321dcc"
+    },
+    "37278f88358023dd21f095bce870a88d": {
+        "serverId": "siroco",
+        "characterName": "노노",
+        "characterId": "37278f88358023dd21f095bce870a88d"
+    },
+    "9a57a2e4e50725bfaf7a25a0d6bf1910": {
+        "serverId": "prey",
+        "characterName": "노노",
+        "characterId": "9a57a2e4e50725bfaf7a25a0d6bf1910"
+    },
+    "da452a75ada3ab7c3454d497c8c72552": {
+        "serverId": "casillas",
+        "characterName": "노노",
+        "characterId": "da452a75ada3ab7c3454d497c8c72552"
+    },
+    "9b4e78554406c4816b550513ea51f432": {
+        "serverId": "anton",
+        "characterName": "노노",
+        "characterId": "9b4e78554406c4816b550513ea51f432"
+    },
+    "c5337f05f4c6ef30e2be417d4aedc279": {
+        "serverId": "bakal",
+        "characterName": "노노",
+        "characterId": "c5337f05f4c6ef30e2be417d4aedc279"
     }
 }

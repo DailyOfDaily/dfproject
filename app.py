@@ -10,7 +10,7 @@ import logging
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)  # CORS 허용
+# CORS(app)  # CORS 허용
 
 
 # API 기본 정보 (환경 변수에서 API 키 가져오기)

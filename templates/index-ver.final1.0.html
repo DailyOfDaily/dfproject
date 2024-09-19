@@ -148,7 +148,7 @@
 <body>
     <h1>DFO Character Search</h1>
 
-    <label for="serverSelect">서버 선택 : </label>
+    <label for="serverSelect">Select Server:</label>
     <select id="serverSelect">
         <option value="all">전체</option>
         <option value="cain">카인</option>
@@ -163,9 +163,12 @@
 
     <br><br>
 
-    <label for="characterName">캐릭터명 검색 : </label>
-    <input type="text" id="characterName" placeholder="캐릭터 이름을 입력하세요" onkeypress="handleKeyPress(event)">
-    <button onclick="searchCharacter()">검색</button>
+    <label for="characterName">Enter Character Name:</label>
+    <input type="text" id="characterName" placeholder="Enter character name" onkeypress="handleKeyPress(event)">
+
+    <br><br>
+
+    <button onclick="searchCharacter()">Search</button>
 
     <div class="character-container" id="characterContainer"></div>
 
@@ -178,7 +181,7 @@
                 <div class="popup-right" id="popupRightContent"></div>
             </div>
             <div class="popup-footer">
-                <button onclick="showEquipment()">장비</button>
+                <button onclick="showEquipment()">장111비</button>
                 <button onclick="showAvatar()">아바타</button>
                 <button onclick="showStatus()">능력치</button>
                 <button onclick="showCreature()">크리처</button>
@@ -200,7 +203,7 @@
             const serverId = document.getElementById('serverSelect').value;
     
             if (!characterName || !serverId) {
-                alert("캐릭터 이름을 입력해 주세요.");
+                alert("Please enter a character name and select a server.");
                 return;
             }
 
@@ -294,27 +297,12 @@
 
             const characterDiv = document.createElement('div');
             characterDiv.className = 'character-frame';
-
-            // 서버 ID를 한글로 변환하는 매핑
-            const serverNameMap = {
-                'cain': '카인',
-                'diregie': '디레지에',
-                'siroco': '시로코',
-                'prey': '프레이',
-                'casillas': '카시야스',
-                'hilder': '힐더',
-                'anton': '안톤',
-                'bakal': '바칼'
-            };
-
-            // characterServerId에 따른 한글 서버명 출력
-            const serverName = serverNameMap[characterServerId] || characterServerId;  // 해당되지 않으면 기본 ID 출력
-
+            
             characterDiv.innerHTML = `
                 <img src="${apiUrl_img}" alt="${character.characterName}" onclick="openPopup('${characterServerId}', '${characterId}', '${apiUrl_img}')">
                 <div class="character-info">
                     <strong>${character.characterName}</strong><br>
-                    <small>서버 : ${serverName}</small>
+                    <small>Server: ${characterServerId}</small>
                 </div>
             `;
 
@@ -437,16 +425,15 @@
                         data.avatar.forEach(item => {
                             const itemDiv = document.createElement('div');
                             itemDiv.className = 'avatar-item';
-
+                            
                             // 기본적으로 '이름1'을 출력
                             let nameContent = `<p class="option-text"><strong>${item.itemName}</strong></p>`;
-
+                            
                             // '클론'이라는 단어가 포함되어 있으면 '이름2'도 출력
                             if (item.itemName.includes('클론')) {
-                                const cloneName = item.clone.itemName ? item.clone.itemName : ' - '; // null일 경우 '없음' 출력
-                                nameContent += `<p class="option-text"><strong>${cloneName}</strong></p>`;
+                                nameContent += `<p class="option-text"><strong>${item.clone.itemName}</strong></p>`;
                             }
-
+                            
                             itemDiv.innerHTML = `
                                 <div class="avatar-item-content">
                                     <img src="https://img-api.neople.co.kr/df/items/${item.itemId}" alt="${item.itemName}">
@@ -464,7 +451,6 @@
                     } else {
                         rightContent.innerHTML += '<p>No equipment found.</p>';
                     }
-
 
 
                     
