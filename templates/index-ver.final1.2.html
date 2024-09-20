@@ -156,7 +156,7 @@
 
     .top_container1 {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         margin: 20px;
     }
@@ -167,22 +167,6 @@
         /* label과 select 사이에 여백 추가 */
     }
 
-
-    .top_container1 {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 20px;
-    }
-
-
-    .server-container {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
     .top_container1 a {
         color: black;
         /* 링크 글자색 검정 */
@@ -191,10 +175,6 @@
     }
 
     .top_container2 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
         margin: 20px;
     }
 
@@ -222,19 +202,12 @@
     label{
         font-size: 20px;
     }
-
-    .button-container {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        gap: 10px;
-    }
 </style>
 </head>
 <body>
     <h1 style="text-align: center; font-size: 40px;">던전앤파이터 캐릭터 검색</h1>
     <div class="top_container1">
-        <div class="server-container">
+        <div>
             <label for="serverSelect">서버 선택 : </label>
             <select id="serverSelect">
                 <option value="all">전체</option>
@@ -248,7 +221,7 @@
                 <option value="bakal">바칼</option>
             </select>
         </div>
-        <div class="button-container">
+        <div>
             <button class="topBtn1" onclick="window.location.href='https://dailyofdaily.github.io/MainScreen/';" style="width: 120px;">메인화면</button>
             <button class="topBtn1" onclick="window.location.href='https://dailyofdaily.github.io/Maple_API/';">메이플</button>
         </div>
