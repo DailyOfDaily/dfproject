@@ -318,7 +318,7 @@
 
                     if (Object.keys(data).length === 0) 
                     {
-                        alert("No characters found.");
+                        alert("캐릭터를 찾을 수 없습니다.");
                         return;
                     }
 
@@ -381,11 +381,11 @@
 
                     if (!characterFound) 
                     {
-                        alert("No matching character found.");
+                        alert("캐릭터를 찾을 수 없습니다.");
                     }
                 })
                 .catch(error => {
-                    alert("An error occurred: " + error);
+                    alert("오류가 발생했습니다 : " + error);
                     console.error('Error:', error);
                 });
         }
@@ -488,11 +488,11 @@
                     } 
                     else 
                     {
-                        rightContent.innerHTML += '<p>No equipment found.</p>';
+                        rightContent.innerHTML += '<p>장비 정보를 찾을 수 없습니다.</p>';
                     }
                 })
                 .catch(error => {
-                    console.error("Error fetching equipment:", error);
+                    console.error("장비 정보를 가져오는 중 오류가 발생했습니다. : ", error);
                 });
         }
 
@@ -526,7 +526,7 @@
                 .then(data => {
                     if (data.error) 
                     {
-                        alert("Error fetching avatar: " + data.error);
+                        alert("아바타 정보를 가져오는 중 오류가 발생했습니다. : " + data.error);
                         return;
                     }
 
@@ -573,7 +573,7 @@
 
                 })
                 .catch(error => {
-                    console.error("Error fetching avatar:", error);
+                    console.error("아바타 정보를 가져오는 중 오류가 발생했습니다. : ", error);
                 });
         }
 
@@ -617,7 +617,7 @@
                     rightContent.appendChild(statusTable);
                 })
                 .catch(error => {
-                    console.error("Error fetching status:", error);
+                    console.error("능력치 정보를 가져오는 중 오류가 발생했습니다. ", error);
                 });
         }
 
@@ -634,7 +634,7 @@
                 .then(data => {
                     if (data.error) 
                     {
-                        alert("Error fetching creature: " + data.error);
+                        alert("크리쳐 정보를 가져오는 중 오류가 발생했습니다. : " + data.error);
                         return;
                     }
 
@@ -654,7 +654,7 @@
                     rightContent.appendChild(itemDiv);
                 })
                 .catch(error => {
-                    console.error("Error fetching creature:", error);
+                    console.error("크리쳐 정보를 가져오는 중 오류가 발생했습니다. : ", error);
                 });
         }
     </script>
