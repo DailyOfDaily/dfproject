@@ -178,13 +178,29 @@
         margin: 20px;
     }
 
-    .topBtn{
+    .topBtn1{
         padding: 5px;
+        height: 50px;
+        width: 100px;
+        font-size: 15px;
+    }    
+    .topBtn2{
+        padding-right: 20px;
+        height: 45px;
+        font-size: 20px;
+        text-indent: 15px;
+    }
+    #serverSelect{
+        height: 40px;
+        font-size: 20px;
+    }
+    label{
+        font-size: 20px;
     }
 </style>
 </head>
 <body>
-    <h1 style="text-align: center;">던전앤파이터 캐릭터 검색</h1>
+    <h1 style="text-align: center; font-size: 40px;">던전앤파이터 캐릭터 검색</h1>
     <div class="top_container1">
         <div>
             <label for="serverSelect">서버 선택 : </label>
@@ -201,16 +217,15 @@
             </select>
         </div>
         <div>
-            <button class="topBtn"><a href="https://dailyofdaily.github.io/MainScreen/" style="color: black; text-decoration: none;">메인화면</a></button>
-            <button class="topBtn"><a href="https://dailyofdaily.github.io/Maple_API/" style="color: black; text-decoration: none;">메이플</a></button>
+            <button class="topBtn1"><a href="https://dailyofdaily.github.io/MainScreen/" style="color: black; text-decoration: none;">메인화면</a></button>
+            <button class="topBtn1"><a href="https://dailyofdaily.github.io/Maple_API/" style="color: black; text-decoration: none;">메이플</a></button>
         </div>
     </div>
 
     <div class="top_container2">
-        <label for="characterName">캐릭터 검색 :
-        </label>
-        <input class="topBtn" type="text" id="characterName" placeholder="캐릭터 이름을 입력하세요" onkeypress="handleKeyPress(event)">
-        <button class="topBtn" onclick="searchCharacter()">검색</button>
+        <label for="characterName">캐릭터 검색 : </label>
+        <input class="topBtn2" type="text" id="characterName" placeholder="캐릭터 이름을 입력하세요" onkeypress="handleKeyPress(event)">
+        <button class="topBtn1" onclick="searchCharacter()">검색</button>
     </div>
 
     <div class="character-container" id="characterContainer"></div>
