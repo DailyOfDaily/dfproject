@@ -219,6 +219,27 @@
         align-items: center;
         gap: 10px;
     }
+
+    /* 우측 하단에 고정된 버튼 스타일 */
+    #scrollTopBtn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 20px;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: none; /* 초기에는 숨김 */
+        z-index: 1000; /* 다른 요소 위에 표시 */
+    }
+    /* 버튼에 마우스를 올렸을 때 */
+    #scrollTopBtn:hover {
+        background-color: yellow;
+        color: black;
+    }
+
 </style>
 </head>
 <body>
@@ -250,8 +271,13 @@
         <button class="topBtn1" onclick="searchCharacter()">검색</button>
     </div>
 
+    <!-- 상단으로 이동 버튼 -->
+    <button id="scrollTopBtn" onclick="scrollToTop()">Top</button>
+
+    <!-- 캐릭터 표시할 컨테이너 생성 영역 -->
     <div class="character-container" id="characterContainer"></div>
 
+    <!-- 캐릭터 상세 팝업창 -->
     <div id="characterPopup" class="popup">
         <div class="popup-content">
             <div class="popup-body">
@@ -647,6 +673,29 @@
                     console.error("크리쳐 정보를 가져오는 중 오류가 발생했습니다. : ", error);
                 });
         }
+
+
+
+        // 스크롤 시 버튼을 표시하는 함수
+        window.onscroll = function() { toggleScrollTopBtn(); };
+
+        function toggleScrollTopBtn() {
+            const scrollTopBtn = document.getElementById("scrollTopBtn");
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                scrollTopBtn.style.display = "block"; // 스크롤이 일정 이상이면 버튼 표시
+            } else {
+                scrollTopBtn.style.display = "none"; // 그렇지 않으면 숨김
+            }
+        }
+
+        // 버튼 클릭 시 상단으로 이동하는 함수
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'auto' // 스무스하게 이동
+            });
+        }
+
     </script>
 </body>
 </html>
