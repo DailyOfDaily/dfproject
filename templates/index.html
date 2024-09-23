@@ -296,6 +296,12 @@
     </div>
 
     <script>
+
+        // 숫자 천 단위로 쉼표 추가
+        function formatNumber(number) {
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
         function handleKeyPress(event) 
         {
             if (event.key === 'Enter') 
@@ -623,7 +629,7 @@
                             `
                                 <tr>
                                     <td style="border: 1px solid #ddd; padding: 8px;">${item.name}</td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">${item.value}</td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">${formatNumber(item.value)}</td>
                                 </tr>
                             `
                             )
